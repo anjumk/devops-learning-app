@@ -5,19 +5,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '/opt/homebrew/bin/mvn clean compile'
+                sh 'chmod +x mvnw'
+                sh './mvnw clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh '/opt/homebrew/bin/mvn test'
+                sh './mvnw test'
             }
         }
 
         stage('Package') {
             steps {
-                sh '/opt/homebrew/bin/mvn package'
+                sh './mvnw package'
             }
         }
     }
