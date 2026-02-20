@@ -1,26 +1,34 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+    }
+
     stages {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/anjumk/devops-learning-app.git'
+                git 'https://github.com/anjumk/devops-learning-app.git'
             }
         }
 
-        stage('Build Application') {
+        stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean compile'
             }
         }
 
-        stage('Archive Artifact') {
+        stage('Test') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
 }
-
