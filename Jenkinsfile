@@ -19,7 +19,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
                     sh '''
-                    $MAVEN_HOME/bin/mvn clean verify sonar:sonar \
+                    ./mvnw clean verify sonar:sonar \
                     -Dsonar.projectKey=anjumk_devops-learning-app \
                     -Dsonar.organization=anjumk \
                     -Dsonar.host.url=https://sonarcloud.io \
