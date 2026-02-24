@@ -15,6 +15,7 @@ pipeline {
                 sh './mvnw test'
             }
         }
+
         stage('Build & Sonar Scan') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
@@ -28,13 +29,11 @@ pipeline {
                 }
             }
         }
+
         stage('Package') {
             steps {
                 sh './mvnw package'
             }
         }
-    }
-    tools {
-        maven 'Maven'
     }
 }
