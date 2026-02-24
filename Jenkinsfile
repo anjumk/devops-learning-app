@@ -15,17 +15,15 @@ pipeline {
                 sh './mvnw test'
             }
         }
-        stage('SonarCloud Analysis') {
+        stage('Build & Sonar Scan') {
             steps {
-                withSonarQubeEnv('SonarCloud') {
-                    ssh '''
-                     ${MAVEN_HOME}/bin/mvn clean verify sonar:sonar \
-                     -Dsonar.projectKey=anjumk_devops-learning-app \
-                     -Dsonar.organization=anjumk \
-                     -Dsonar.host.url=https://sonarcloud.io \
-                     -Dsonar.login=$SONAR_TOKEN
-                     '''
-                }
+                sh '''
+                ${MAVEN_HOME}/bin/mvn clean verify sonar:sonar \
+                -Dsonar.projectKey=anjumk_devops-learning-app \
+                -Dsonar.organization=anjumk \
+                -Dsonar.host.url=https://sonarcloud.io \
+                -Dsonar.login=$SONAR_TOKEN
+                '''
             }
         }
         stage('Package') {
@@ -35,6 +33,6 @@ pipeline {
         }
     }
     tools {
-        maven 'Maven-3.9'
+        maven 'Maven'
     }
 }
