@@ -17,9 +17,7 @@
         <sonar.projectKey>anjumk_devops-learning-app</sonar.projectKey>
         <sonar.organization>anjumk</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-s
     </properties>
-
     <dependencies>
         <!-- REST API -->
         <dependency>
