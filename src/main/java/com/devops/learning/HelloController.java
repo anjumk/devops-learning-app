@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String sayHello() {
         return "Hello! DevOps learning project is running.";
     }
