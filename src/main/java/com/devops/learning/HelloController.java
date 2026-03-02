@@ -13,7 +13,7 @@ public class HelloController {
 
     @GetMapping("/status")
     public String status() {
-        return "Application is healthy - Feature branch change.";
+        return "Application is healthy - Theme Feature Added";
     }
 }
 
